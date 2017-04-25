@@ -7,10 +7,10 @@ Library         OperatingSystem  WITH NAME  OS
 
 *** Test Cases ***
 Put Directory To Existing Remote Path
-    [Setup]  SSH.Directory Should Not Exist  textfiles
+    [Setup]  SSH.Directory Should Not Exist  testdata/textfiles
     Put Directory  ${LOCAL TEXTFILES}  .
-    Remote Directory Should Exist With Content  ./textfiles
-    [Teardown]  Execute Command  rm -rf ./textfiles
+    Remote Directory Should Exist With Content  ./testdata/textfiles
+    [Teardown]  Execute Command  rm -rf ./testdata/textfiles
 
 Put Directory To Non-Existing Remote Path
     [Setup]  SSH.Directory Should Not Exist  another_dir_name
@@ -20,8 +20,8 @@ Put Directory To Non-Existing Remote Path
 
 Put Directory Including Subdirectories To Existing Remote Path
     Put Directory  ${LOCAL TEXTFILES}  .  recursive=True
-    Remote Directory Should Exist With Subdirectories  ./textfiles
-    [Teardown]  Execute Command  rm -rf ./textfiles
+    Remote Directory Should Exist With Subdirectories  ./testdata/textfiles
+    [Teardown]  Execute Command  rm -rf ./testdata/textfiles
 
 Put Directory Including Subdirectories To Non-Existing Remote Path
     [Setup]  SSH.Directory Should Not Exist  another/dir/path
@@ -32,8 +32,8 @@ Put Directory Including Subdirectories To Non-Existing Remote Path
 Put Directory Including Empty Subdirectories
     [Setup]  OS.Create Directory  ${LOCAL TEXTFILES}${/}empty
     Put Directory  ${LOCAL TEXTFILES}  .  recursive=True
-    SSH.Directory Should Exist  textfiles/empty
-    Remote Directory Should Exist With Subdirectories  textfiles
+    SSH.Directory Should Exist  testdata/textfiles/empty
+    Remote Directory Should Exist With Subdirectories  testdata/textfiles
     [Teardown]  Remove Local Empty Directory And Remote Files
 
 Put Directory Using Relative Source

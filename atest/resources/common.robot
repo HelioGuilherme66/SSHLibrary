@@ -4,7 +4,7 @@ Library     SSHLibrary  WITH NAME  SSH
 *** Variables ***
 ${USERNAME}               test
 ${PASSWORD}               test
-${HOST}                   localhost
+${HOST}                   192.168.2.15    # localhost
 ${PROMPT}                 $
 ${REMOTE TEST ROOT NAME}  robot-testdir
 ${REMOTE TEST ROOT}       /home/test/${REMOTE TEST ROOT NAME}

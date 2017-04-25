@@ -13,7 +13,7 @@ Get File Using Absolute Source
     [Teardown]  OS.Remove File  ${LOCAL TMPDIR}${/}${FILE WITH NON-ASCII NAME}
 
 Get File Using Absolute Windows Source
-    [tags]   windows
+    [tags]   windows   non-critical
     SSH.Get File  ${REMOTE WINDOWS TEST ROOT}/${SUBDIRECTORY NAME}/${FILE WITH NON-ASCII NAME}  ${LOCAL TMPDIR}${/}
     OS.File Should Exist  ${LOCAL TMPDIR}${/}${FILE WITH NON-ASCII NAME}
     [Teardown]  OS.Remove File  ${LOCAL TMPDIR}${/}${FILE WITH NON-ASCII NAME}
