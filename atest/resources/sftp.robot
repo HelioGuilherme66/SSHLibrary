@@ -22,3 +22,6 @@ Login And Upload Test Files
     Put Directory  ${LOCAL TEXTFILES}  ${REMOTE TEST ROOT}  recursive=True
     Execute command   mkdir ${REMOTE TEST ROOT}/${SUBDIRECTORY NAME}/${DIRECTORY WITH EMPTY SUBDIRECTORY}
     Execute command   mkdir ${REMOTE TEST ROOT}/${SUBDIRECTORY NAME}/${DIRECTORY WITH EMPTY SUBDIRECTORY}/${EMPTY SUB DIR}
+
+Remove Remote Files
+    Execute Command  rm -rf testdata/textfiles

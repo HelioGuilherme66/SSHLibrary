@@ -32,14 +32,13 @@ sys.path.append(join(CURDIR, '..', 'src'))
 COMMON_OPTS = ('--log', 'NONE', '--report', 'NONE')
 
 def atests(*opts):
+    os_includes = ('--exclude', 'windows')
     if os.name == 'java':
-        jython(*opts)
+        jython(*(os_includes+opts))
         process_output(join(OUTPUT_JYTHON, 'output.xml'))
         return rebot(join(OUTPUT_JYTHON, 'output.xml'), outputdir=OUTPUT_JYTHON)
     elif os.name == 'nt':
         os_includes = ('--include', 'windows')
-    else:
-        os_includes = ('--exclude', 'windows')
     python(*(os_includes+opts))
     process_output(join(OUTPUT_PYTHON, 'output.xml'))
     return rebot(join(OUTPUT_PYTHON, 'output.xml'), outputdir=OUTPUT_PYTHON)

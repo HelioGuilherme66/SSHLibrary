@@ -2,15 +2,15 @@
 Force Tags      pybot   jybot
 Resource        resources/sftp.robot
 Suite Setup     Login As Valid User
-Suite Teardown  Close All Connections
+Suite Teardown  Run Keywords    Remove Remote Files    Close All Connections
 Library         OperatingSystem  WITH NAME  OS
 
 *** Test Cases ***
 Put Directory To Existing Remote Path
     [Setup]  SSH.Directory Should Not Exist  testdata/textfiles
     Put Directory  ${LOCAL TEXTFILES}  .
-    Remote Directory Should Exist With Content  ./testdata/textfiles
-    [Teardown]  Execute Command  rm -rf ./testdata/textfiles
+    Remote Directory Should Exist With Content  testdata/textfiles
+    [Teardown]  Execute Command  rm -rf testdata/textfiles
 
 Put Directory To Non-Existing Remote Path
     [Setup]  SSH.Directory Should Not Exist  another_dir_name
@@ -20,8 +20,8 @@ Put Directory To Non-Existing Remote Path
 
 Put Directory Including Subdirectories To Existing Remote Path
     Put Directory  ${LOCAL TEXTFILES}  .  recursive=True
-    Remote Directory Should Exist With Subdirectories  ./testdata/textfiles
-    [Teardown]  Execute Command  rm -rf ./testdata/textfiles
+    Remote Directory Should Exist With Subdirectories  testdata/textfiles
+    [Teardown]  Execute Command  rm -rf testdata/textfiles
 
 Put Directory Including Subdirectories To Non-Existing Remote Path
     [Setup]  SSH.Directory Should Not Exist  another/dir/path
