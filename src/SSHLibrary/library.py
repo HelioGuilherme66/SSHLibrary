@@ -19,6 +19,11 @@ except ImportError:
     logger = None
 from robot.utils import ConnectionCache, is_string
 
+try:
+    from sys import IOException
+except ImportError:
+    IOException = RuntimeError
+
 from .abstractclient import SSHClientException
 from .client import SSHClient
 from .config import (Configuration, IntegerEntry, LogLevelEntry, NewlineEntry,
@@ -682,7 +687,7 @@ class SSHLibrary(object):
             index_or_alias = self._connections.current_index
         try:
             config = self._connections.get_connection(index_or_alias).config
-        except RuntimeError:
+        except IOException or RuntimeError:
             config = SSHClient(None).config
         self._info(str(config))
         return_values = tuple(self._get_config_values(config, index, host,

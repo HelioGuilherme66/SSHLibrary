@@ -62,7 +62,7 @@ Execute Command With Robot Timeout
 
 Execute Command With Huge Output
    [Tags]      pybot        # this fails with jybot
-   [Timeout]   5 seconds
+   [Timeout]   6 seconds
    Execute Command     echo 'foo\\nbar\\n' > file.txt
    Execute Command     for i in {1..20}; do cat file.txt file.txt > file2.txt && mv file2.txt file.txt; done
    Execute Command     cat file.txt
