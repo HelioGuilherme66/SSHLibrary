@@ -1,2 +1,1 @@
-HOST='192.168.2.15'    # localhost
-
+HOST='localhost'    # localhost  '192.168.2.15'
