@@ -75,8 +75,8 @@ class PythonSSHClient(AbstractSSHClient):
             self.client.connect(self.config.host, self.config.port, username,
                                 password, key_filename=key_file,
                                 allow_agent=False, timeout=float(self.config.timeout))
-        except paramiko.AuthenticationException:
-            raise SSHClientException
+        except paramiko.AuthenticationException, paramiko.ssh_exception.PasswordRequiredException as e:
+            raise SSHClientException(e)
 
     def _start_command(self, command):
         cmd = RemoteCommand(command, self.config.encoding)
